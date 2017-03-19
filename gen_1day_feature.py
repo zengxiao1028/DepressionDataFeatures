@@ -19,6 +19,7 @@ def stat_day(time_slice,raw_data_dict):
     _24 = datetime2sec(time_slice)
 
     feature = []
+    feature.append(time_slice-timedelta(days=1))
 
     spans = [(_00,_24)]
 
@@ -172,14 +173,14 @@ def prepare_data(subjects,data_dir ):
 if __name__ == '__main__':
 
     ### features (%percentage):
-    ### act_onfoot, act_still, act_invehicle, act_tilting, calling_duration, screen_on, light_off
+    ### stat_datetime, act_onfoot, act_still, act_invehicle, act_tilting, calling_duration, screen_on, light_off
 
-    subjects = os.listdir('/Users/xiaozeng/research/MobileDepression/dataset/CS120Data/CS120/')
-    result = prepare_data(subjects, '/Users/xiaozeng/research/MobileDepression/dataset/CS120Data/CS120/')
+    #subjects = os.listdir('/Users/xiaozeng/research/MobileDepression/dataset/CS120Data/CS120/')
+    #result = prepare_data(subjects, '/Users/xiaozeng/research/MobileDepression/dataset/CS120Data/CS120/')
 
     ### write
-    with open('1day_feature.pkl', 'wb') as f:
-        pickle.dump(result, f, protocol=pickle.HIGHEST_PROTOCOL)
+    #with open('1day_feature.pkl', 'wb') as f:
+    #    pickle.dump(result, f, protocol=pickle.HIGHEST_PROTOCOL)
 
     ### read
     with open('1day_feature.pkl', 'rb') as f:
